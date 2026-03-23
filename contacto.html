@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Contacto / Cómo Ayudar</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <div class="container"></div>
+  <header class="superior">
+    
+    <div class="logo">
+      <img src="logo dental.png">
+    </div>
+    <div class="titulo-header">
+      <h2>CL&Iacute;NICA DENTAL</h2>
+    </div>
+
+        <nav class="menu">
+            <ul class="opciones">
+            <li><a href="pagina1.html">Servicios</a></li>
+            <li><a href="productos.html">Productos</a></li>
+            <li><a href="contacto.html">Solicita Cita</a></li>
+            </ul>
+        </nav>
+
+  </header>
+  <br>
+  
+   <div class="contenido-principal">
+  <section class="info">
+  <aside>
+    <h3>Solicita tu cita aqui:</h3>
+  </aside>
+  
+  <section>
+    <h2>Te invitamos a llenar la siguiente encuesta con el fin de poder agendar tu cita de manera r&aacute;pida y brindarte una atenci&oacute;n más personalizada. La informaci&oacute;n proporcionada nos permitir&aacute; conocer mejor tus necesidades y ofrecerte el mejor servicio posible.</h2>
+    <br>
+    <h2>Formulario de contacto</h2>
+
+      <form id="miFormulario">
+    
+      <label for="nombre">Nombre:</label><br>
+      <input type="text" id="nombre" name="nombre" required><br><br>
+
+      <label for="telefono">Tel&eacute;fono:</label><br>
+      <input type="telefono" id="telefono" name="telefono" required><br><br>
+
+       <label for="edad">Edad:</label><br>
+      <input type="edad" id="edad" name="edad" required><br><br>
+
+       <label for="correo">Correo electr&oacute;nico:</label><br>
+      <input type="email" id="correo" name="correo" required><br><br>
+
+      <label for="servicio">¿Qu&eacute; servicio le interesa solicitar?</label><br>
+      <input type="servicio" id="servicio" name="servicio" required><br><br>
+
+
+      <button type="submit" class="boton-palpita">Enviar</button>
+    </form>
+
+    <p class="mensaje" id="mensaje"></p>
+
+<script>
+
+const url = "https://script.google.com/macros/s/AKfycbyxl_k5y-mPzNID7Ep8tlOL700BlrOf49vL0sWFrK5HI1gqafrQASGsm3jNjxZVbEuU/exec";
+
+document.getElementById("miFormulario") 
+.addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    const datos = {
+        nombre: document.getElementById("nombre").value,
+        telefono: document.getElementById("telefono").value,
+        edad: document.getElementById("edad").value,
+        correo: document.getElementById("correo").value,
+        servicio: document.getElementById("servicio").value,
+
+    };
+
+    fetch(url, {
+        method: "POST",
+        body: JSON.stringify(datos)
+    })
+
+    .then(res => res.json())
+    .then(data => {
+    document.getElementById("mensaje").innerHTML =
+        "Datos guardados correctamente ✔️";
+    document.getElementById("miFormulario").reset();
+    })
+    .catch(error => {
+    document.getElementById("mensaje").innerHTML =
+        "Error al guardar ❌";
+    });
+
+})
+
+</script>
+
+
+  </section>
+  </section>
+
+   <section class="publi">
+    <img src="cita.jpg"><br>
+    </section>
+  </div>
+
+   <div class="footer">  
+            <footer>
+                <h3>&copy;JEANETE COUOH & CLARA MIAM - M&eacute;rida, Yucat&aacute;n</h3>
+                <center>
+                <br>
+                <img src="ing.avif" width="40" height="40">
+                <img src="face.png" width="40" height="40">
+                <img src="Tiktok.jpg" width="40" height="40">
+                </center>
+            </footer>
+</body>
+</html>
